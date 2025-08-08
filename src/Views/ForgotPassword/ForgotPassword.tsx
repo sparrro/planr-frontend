@@ -27,6 +27,9 @@ const ForgotPassword = () => {
                 setErrormsg("No token provided");
             } else {
                 const result = await callResetPassword(token, firstPassword);
+                if (result instanceof Error) {
+                    setErrormsg(result.message);
+                }
             }
         } else {
             setErrormsg(validation.problem!);
