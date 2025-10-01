@@ -1,8 +1,8 @@
-const BASE_URL = ""
+import { API_URI } from "../../config/environment";
 
 export const callResetPassword = async (token: string, password: string) => {
     try {
-        const response = await fetch(`http://127.0.0.1:3000/user/password/reset/${token}`, { //ändra till den riktiga url:en
+        const response = await fetch(`${API_URI}/user/password/reset/${token}`, { //ändra till den riktiga url:en
             method: "post",
             body: JSON.stringify({
                 newPassword: password
@@ -20,7 +20,7 @@ export const callResetPassword = async (token: string, password: string) => {
 
 export const callSignUp = async (username: string, password: string, email: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/signup`, {
+        const response = await fetch(`${API_URI}/user/signup`, {
             method: "post",
             body: JSON.stringify({
                 username,
@@ -40,7 +40,7 @@ export const callSignUp = async (username: string, password: string, email: stri
 
 export const callLogIn = async (password: string, username?: string, email?: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/login`, {
+        const response = await fetch(`${API_URI}/user/login`, {
             method: "post",
             body: JSON.stringify({
                 username,
@@ -60,7 +60,7 @@ export const callLogIn = async (password: string, username?: string, email?: str
 
 export const callLogOut = async (id: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/logout`, {
+        const response = await fetch(`${API_URI}/user/logout`, {
             method: "post",
             body: JSON.stringify({
                 id
@@ -78,7 +78,7 @@ export const callLogOut = async (id: string) => {
 
 export const callRefreshUserToken = async (token: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/refresh/${token}`, {
+        const response = await fetch(`${API_URI}/user/refresh/${token}`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export const callRefreshUserToken = async (token: string) => {
 
 export const callDeleteAccount = async (id: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/delete/${id}`, {
+        const response = await fetch(`${API_URI}/user/delete/${id}`, {
             method: "delete",
             headers: {
                 "Content-Type": "application/json",
@@ -108,7 +108,7 @@ export const callDeleteAccount = async (id: string) => {
 
 export const callSendPasswordResetEmail = async (email: string) => {
     try {
-        const response = await fetch(`${BASE_URL}/user/sendEmail`, {
+        const response = await fetch(`${API_URI}/user/sendEmail`, {
             method: "post",
             body: JSON.stringify({
                 email
